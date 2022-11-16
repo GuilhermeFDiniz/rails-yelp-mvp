@@ -13,11 +13,18 @@ puts "Creating a new DB"
 100.times do
   restaurant = Restaurant.new(name: Faker::Name.name, address: Faker::Address.street_address, phone_number: Faker::PhoneNumber.phone_number, category: ["chinese", "italian", "japanese", "french", "belgian"].sample)
   if restaurant.save
-    restaurant.save
     puts "Restaurant number #{restaurant.id} created"
   else
     puts "Something went wrong"
   end
+  rand(1..5).times do
+    review = Review.new(content: Faker::Lorem.paragraph, rating: rand(0..5), restaurant_id: restaurant.id)
+  if review.save
+    puts "Review of the Restaurant id:#{review.restaurant.id} was created"
+  else
+    puts "Something went wrong"
+  end
+end
 end
 
 puts "DB Completed"

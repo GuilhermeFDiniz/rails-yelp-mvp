@@ -5,3 +5,6 @@
 <h2><%= @restaurant.name %></h2>
 <h3><%= @restaurant.address %></h3>
 <h3><%= @restaurant.category %></h3>
+
+<%= link_to "Add Comment", new_restaurant_review_path(@restaurant) %>
+<%= link_to "Edit Restaurant", edit_restaurant_path(@restaurant) %>
